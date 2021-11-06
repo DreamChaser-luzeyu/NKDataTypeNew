@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Win64",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:\\PortableSoftware\\opencv\\build\\mingw\\include",
+                "D:\\PortableSoftware\\opencv\\build\\mingw\\include\\opencv",
+                "D:\\PortableSoftware\\opencv\\build\\mingw\\include\\opencv2"
+                ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            // "windowsSdkVersion": "10.0.18362.0",
+            //"compilerPath": "D:/PortableSoftware/mingw64/bin/g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}

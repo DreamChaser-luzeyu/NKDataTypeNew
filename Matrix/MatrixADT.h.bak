@@ -1,0 +1,31 @@
+#ifndef _MATRIXADT_H
+#define _MATRIXADT_H
+
+#include <ostream>
+
+using std::ostream;
+
+template <class T>
+class Matrix {
+    friend ostream& operator<<(ostream&, const Matrix<T>&);
+public:
+    Matrix(int row, int col);
+    Matrix(const Matrix<T>&);
+    ~Matrix();
+    int getRows() const {return theRows;}
+    int getColumns() const {return theColumns;}
+
+    Matrix<T>& operator=(const Matrix<T>&) {throw "Not implemented!";}
+    Matrix<T>& operator+(const Matrix<T>&) const {throw "Not implemented!";}
+    Matrix<T>& operator-(const Matrix<T>&) const {throw "Not implemented!";} 
+    Matrix<T>& operator*(const Matrix<T>&) const {throw "Not implemented!";} 
+
+
+
+protected:
+    int theRows, theColumns;
+    T* elements;
+};
+
+
+#endif

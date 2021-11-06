@@ -1,0 +1,11 @@
+#ifndef _HASHCHAINS_H
+#define _HASHCHAINS_H
+#include <iostream>
+
+template <class K, class V>
+class HashChains {
+
+
+};
+
+#endif
