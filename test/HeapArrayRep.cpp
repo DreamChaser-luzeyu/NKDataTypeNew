@@ -2,6 +2,8 @@
 #include <vector>
 #include "../BinTreeAndHeap/HeapArrayRep.h"
 
+
+
 using std::cin;
 using std::cout;
 using std::istream;
@@ -9,7 +11,7 @@ using std::ostream;
 using std::endl;
 using std::vector;
 
-void inputArray(istream& in, vector<int>& arr) {
+void inputArray(istream& in, vector<int>& arr) { 
     int inputBuffer;
     while(in >> inputBuffer) {
         arr.push_back(inputBuffer);

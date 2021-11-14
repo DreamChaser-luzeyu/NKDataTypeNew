@@ -97,7 +97,7 @@ bool isMaxHeap
 // }
 
 template <class T>
-void MyMaxHeap<T>::outputArray(ostream& out) {
+void MyMaxHeap<T>::outputArray(ostream& out) {// 这是一个输出函数，可以输出数组的内容
     out << "Array : ";
     for(int i=0; i<(int)data.size(); i++) {
         out << data.at(i) << " ";
@@ -112,7 +112,7 @@ void MyMaxHeap<T>::erase(const T& elem) {
 }
 
 template <class T>
-int MyMaxHeap<T>::getParentIndex(int nodeIndex) const {
+int MyMaxHeap<T>::getParentIndex(int nodeIndex) const {// 获取父节点下标
     if(nodeIndex < 0) {
         throw "getParentIndex() : Invalid index";
     }
@@ -123,7 +123,7 @@ int MyMaxHeap<T>::getParentIndex(int nodeIndex) const {
 }
 
 template <class T>
-int MyMaxHeap<T>::getChildIndex(int nodeIndex) const {
+int MyMaxHeap<T>::getChildIndex(int nodeIndex) const {// 获取左子节点下标
     if(nodeIndex >= getFirstLeafNodeIndex()) {
         throw "getChildIndex : Do not have child : leaf node";
     }
@@ -134,13 +134,13 @@ int MyMaxHeap<T>::getChildIndex(int nodeIndex) const {
 }
 
 template <class T>
-int MyMaxHeap<T>::getFirstLeafNodeIndex() const {
+int MyMaxHeap<T>::getFirstLeafNodeIndex() const {// 获取从前往后第一个叶子节点的下标
     int size = data.size();
     return (size+1) / 2;
 }
 
 template <class T>
-bool MyMaxHeap<T>::isMaxHeap(int beginIndex) const {
+bool MyMaxHeap<T>::isMaxHeap(int beginIndex) const {// 判断beginIndex的【元子树】是否满足最大堆
     if(beginIndex >= getFirstLeafNodeIndex()) {return true;}
     T maxChild = data.at(getMaxChildIndex(beginIndex));
     T elemNow = data.at(beginIndex);
@@ -149,7 +149,7 @@ bool MyMaxHeap<T>::isMaxHeap(int beginIndex) const {
 }
 
 template <class T>
-int MyMaxHeap<T>::getMaxChildIndex(int parentIndex) const {
+int MyMaxHeap<T>::getMaxChildIndex(int parentIndex) const {// 获取beginIndex的最大子节点下标
     int maxIndex = data.size() - 1;
     int leftChildIndex = getChildIndex(parentIndex) <= maxIndex ? 
                          getChildIndex(parentIndex) : -1;

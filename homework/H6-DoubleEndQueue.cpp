@@ -12,52 +12,52 @@ using std::fstream;
 
 class DoubleEndQueue {
 public:
-    DoubleEndQueue() {
+    DoubleEndQueue() {// 将队列初始化为空 容量为10
         data = new int[10];
         size = 10;
     }
-    DoubleEndQueue(int size) {
+    DoubleEndQueue(int size) {// 将队列初始化为空 容量为size
         data = new int[size];
         this->size = size;
     }
 
-    bool isEmpty() const {
+    bool isEmpty() const { // 判断队列是否为空
         return elemNum == 0;
     }
 
-    bool isFull() const {
+    bool isFull() const {// 判断队列是否为满
         return elemNum == size;
     }
 
-    void addLeft(const int& t) {
+    void addLeft(const int& t) {// 将t插入到队列的左端
         if(isFull()) {throw "Full queue !";}
         int dstIndex = getNextHeadIndex();
         data[dstIndex] = t;
         elemNum ++;
     }
 
-    void addRight(const int& t) {
+    void addRight(const int& t) {// 将t插入到队列的右端
         if(isFull()) {throw "Full queue !";}
         int dstIndex = getNextTailIndex();
         data[dstIndex] = t;    
         elemNum ++;
     }
 
-    void deleteLeft() {
+    void deleteLeft() {// 删除队列的左端
         if(isEmpty()) {throw "Empty";}
         nextHeadIndex ++;
         if(nextHeadIndex == size) {nextHeadIndex = 0;}
         elemNum --;
     }
 
-    void deleteRight() {
+    void deleteRight() {// 删除队列的右端
         if(isEmpty()) {throw "Empty";}
         nextTailIndex --;
         if(nextTailIndex < 0) {nextTailIndex = size-1;}
         elemNum --;
     }
 
-    void printList(ostream& out) {
+    void printList(ostream& out) {// 打印队列
         // if(isEmpty()) {
         //     out << "Empty" << endl;
         //     return;
@@ -85,7 +85,7 @@ public:
         return data[index];
     }
 
-    void printS(ostream& out) {
+    void printS(ostream& out) {// 打印整个队列
         for(int i=0; i<size; i++) {
             out << data[i] << " ";
         }
@@ -95,14 +95,14 @@ public:
     }
 
 private:
-    int getNextTailIndex() {
+    int getNextTailIndex() { // 获取下一个尾部索引
         int toReturn = nextTailIndex;
         nextTailIndex ++;
         if(nextTailIndex == size) {nextTailIndex = 0;}
         return toReturn;
     }
 
-    int getNextHeadIndex() {
+    int getNextHeadIndex() {// 获取下一个头部索引
         int toReturn = nextHeadIndex;
         nextHeadIndex --;
         if(nextHeadIndex < 0) {nextHeadIndex = size-1;}
