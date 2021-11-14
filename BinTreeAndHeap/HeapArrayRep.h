@@ -63,12 +63,12 @@ MyMaxHeap<T>::MyMaxHeap(const vector<T>& src) {
     data = src;
 }
 
-
 template <class T>
-void MyMaxHeap<T>::buildHeap() {                    // 不管你信不信，复杂度是O(n)
+void MyMaxHeap<T>::buildHeap() {                    // O(n)
     int beginIndex = getFirstLeafNodeIndex() - 1;   // 从最后一个非叶子节点（从左往右数）开始遍历
     for(int indexNow = beginIndex; indexNow >= 0; indexNow --) { // 当前下标为indexNow
         int judgeIndex = indexNow;                  // judgeIndex是要判断的下标
+        // T temp = data[judgeIndex];
         while(!isMaxHeap(judgeIndex)) {             // 判断judgeIndex的【元子树】是否满足最大堆
             int dstIndex = getMaxChildIndex(judgeIndex);    // dstIndex是要交换到的目标下标
             mySwap(data[judgeIndex], data[dstIndex]);       // 交换到目标下标
@@ -76,6 +76,25 @@ void MyMaxHeap<T>::buildHeap() {                    // 不管你信不信，复�
         }
     }
 }
+
+bool isMaxHeap
+
+// 过度解耦，无法优化
+// template <class T>
+// void MyMaxHeap<T>::buildHeap() {                    // O(n)
+//     int beginIndex = getFirstLeafNodeIndex() - 1;   // 从最后一个非叶子节点（从左往右数）开始遍历
+//     for(int indexNow = beginIndex; indexNow >= 0; indexNow --) { // 当前下标为indexNow
+//         int judgeIndex = indexNow;                  // judgeIndex是要判断的下标
+//         T temp = data[judgeIndex];                  // 先保存当前节点
+//         while(!isMaxHeap(judgeIndex)) {             // 判断judgeIndex的【元子树】是否满足最大堆
+//             int dstIndex = getMaxChildIndex(judgeIndex);    // dstIndex是要交换到的目标下标
+//             // mySwap(data[judgeIndex], data[dstIndex]);       // 交换到目标下标
+//             data[judgeIndex] = data[dstIndex];              // 把最大的子节点赋值给父亲节点
+//             judgeIndex = dstIndex;                          // 更新需要判断的位置
+//         }
+//         data[judgeIndex] = temp;//
+//     }
+// }
 
 template <class T>
 void MyMaxHeap<T>::outputArray(ostream& out) {
