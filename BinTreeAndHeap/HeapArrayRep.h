@@ -77,9 +77,11 @@ void MyMaxHeap<T>::buildHeap() {                    // O(n)
     }
 }
 
-bool isMaxHeap
+// bool isMaxHeap
 
-// 过度解耦，无法优化
+
+
+
 // template <class T>
 // void MyMaxHeap<T>::buildHeap() {                    // O(n)
 //     int beginIndex = getFirstLeafNodeIndex() - 1;   // 从最后一个非叶子节点（从左往右数）开始遍历
@@ -136,7 +138,7 @@ int MyMaxHeap<T>::getChildIndex(int nodeIndex) const {// 获取左子节点下�
 template <class T>
 int MyMaxHeap<T>::getFirstLeafNodeIndex() const {// 获取从前往后第一个叶子节点的下标
     int size = data.size();
-    return (size+1) / 2;
+    return size / 2;
 }
 
 template <class T>

@@ -1,0 +1,115 @@
+# include <iostream>
+# include <string>
+#include <vector>
+using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+
+class node {
+public:
+	string data;
+	node* right;//左下结点
+	node* left;//右下结点
+};
+
+class tree
+{
+public:
+	int count;
+	//node** a = new node * [count + 2];//构建一个指针数组
+	vector<node*> a(count + 2);
+	int p_num, q_num,x_num;//记录p,q,x的序号
+	void input() {
+		cout << "请问你需要输入几个数值来进行二叉树操作（null也包括在内）？" << endl;;
+		cin >> count;
+		cout << "请开始输入数据" << endl;
+		a[0] = nullptr;
+		a[count + 1] = nullptr;
+		
+		for (int i = 1; i < count+1; i++)
+		{
+			node* p = new node();
+			p->right = nullptr;
+			p->left = nullptr;
+			string x;
+			cin >> x;
+			if (x == "null")p = nullptr;
+			else p->data =x;
+			a[i] = p;
+		}
+		for (int i = 1; i <=count / 2; i++)
+		{
+			if (a[i] != nullptr)
+			{
+				a[i]->left = a[i * 2];
+				a[i]->right = a[i * 2 + 1];
+			}
+		}
+	
+	}
+	node* find(string x, string y)
+	{
+		node* p, *q;
+		for (int i = 1; i <= count; i++)
+		{
+			if (a[i] != nullptr)
+			{
+				if (a[i]->data == x)
+				{
+					p = a[i];
+					p_num = i;
+				}
+				if (a[i]->data == y)
+				{
+					q = a[i];
+					q_num = i;
+				}
+			}
+		}//通过for循环找到p,q对应的位置
+		for (int i = p_num; i >= 1; i=i/2)
+		{
+			for (int j = q_num; j >= 1; j=j/2)
+			{
+				if (i == j) {
+					x_num = i;
+					return a[i];
+				}
+			}
+		 }
+	}
+	void path(node* x, string y)
+	{
+		y = y + " " + x->data;
+		if (x->left != nullptr)path(x->left, y);
+		if (x->right != nullptr)path(x->right, y);
+		if (x->left == nullptr && x->right == nullptr)
+		{
+			cout << y << endl;
+			return;
+		}
+	}
+	void add(node* x) 
+	{
+
+	}
+};
+
+int main() {
+	tree text;
+	string p, q;
+	text.input();
+	cout << "p=";
+	cin >> p;
+	cout<< "q=";
+	cin >> q;
+	cout << "输出1：x=";
+	node* x=text.find(p, q);
+	string x_data = x->data;
+	cout << x_data;
+	cout <<endl<< "输出2:"<<endl;
+	text.path(x, "");
+	system("pause");
+	return 0;
+}

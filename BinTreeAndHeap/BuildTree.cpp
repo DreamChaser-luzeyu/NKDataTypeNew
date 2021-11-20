@@ -8,6 +8,8 @@ using std::cin;
 using std::vector;
 using std::string;
 
+
+// Auto generated
 // 中缀表达式转后缀表达式
 string infixToSuffix(string infix) {
 	string suffix = "";
