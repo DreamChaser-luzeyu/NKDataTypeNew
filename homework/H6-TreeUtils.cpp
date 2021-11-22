@@ -119,28 +119,28 @@ string prefixToPostfix(string prefix) {
     return postfix;
 }
 
-// 前缀表达式转中缀表达式
-string prefixToInfix(string prefix) {
-    int len = prefix.size();
-    string infix;
-    stack<char> opStack;
-    stack<char> numStack;
-    for(int i=len-1; i>=0; i--) {
-        char ch = prefix.at(i);
-        if(!isValidChar(ch)) {throw "Invalid character";}
-        if(isOperator(ch)) {
-            char num1 = numStack.top();
-            numStack.pop();
-            char num2 = numStack.top();
-            numStack.pop();
+// // 前缀表达式转中缀表达式
+// string prefixToInfix(string prefix) {
+//     int len = prefix.size();
+//     string infix;
+//     stack<char> opStack;
+//     stack<char> numStack;
+//     for(int i=len-1; i>=0; i--) {
+//         char ch = prefix.at(i);
+//         if(!isValidChar(ch)) {throw "Invalid character";}
+//         if(isOperator(ch)) {
+//             char num1 = numStack.top();
+//             numStack.pop();
+//             char num2 = numStack.top();
+//             numStack.pop();
             
-        }
-        else {
-            numStack.push(ch);
-        }
+//         }
+//         else {
+//             numStack.push(ch);
+//         }
     
-    return "";
-}
+//     return "";
+// }
 
 
 
@@ -213,9 +213,9 @@ void buildTree(BinTree<char>& tree, istream& in, ostream& out) {
                 out << "Please input the prefix expression: " << endl;
                 in >> prefix;
                 // out << prefixToPostfix(prefix);
-                out << prefixToInfix(prefix);
+                // out << prefixToInfix(prefix);
                 system("pause");
-                tree.buildTreeFromPostfix(infixToPostfix(prefixToInfix(prefix)));
+                // tree.buildTreeFromPostfix(infixToPostfix(prefixToInfix(prefix)));
                 break;}
             case 4: {
                 vector<char> array;
