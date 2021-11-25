@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../BinTreeAndHeap/HeapArrayRep.h"
+#include "../PriorityQueue/HeapArrayRep.h"
 
 
 
