@@ -72,7 +72,9 @@
         "limits": "cpp",
         "new": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "map": "cpp",
+        "iomanip": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled", // 格式化时调整include的顺序（按字母排序）
 }

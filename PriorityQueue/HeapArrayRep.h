@@ -45,22 +45,6 @@ private:
     vector<T> data;
 };
 
-// template <class T>
-// void MyMaxHeap<T>::insert(const T& elem) {          // 复杂度：O(log n), O(height)
-//     int indexNow = data.size();
-//     data.push_back(elem);
-//     if(indexNow == 0) {                             // 插入根节点时无需比较
-//         return;
-//     }
-//     int parentIndex = getParentIndex(indexNow);     // 获取父节点下标
-//     while(data.at(indexNow) > data.at(parentIndex)) {   // 比父节点大就循环
-//         mySwap(data[indexNow], data[parentIndex]);  //跟父节点交换
-//         indexNow = parentIndex;                     // 更新当前下标
-//         if(indexNow == 0) {break;}                  // 已经到了根节点，不能再上了
-//         parentIndex = getParentIndex(indexNow);     // 更新父节点下标
-//     }
-// }
-
 template <class T>
 void MyMaxHeap<T>::push(const T& elem) {          // 复杂度：O(log n), O(height)
     data.push_back(elem);
@@ -83,7 +67,13 @@ void MyMaxHeap<T>::pop() {
     int indexNow;
     T temp = data[lastElemIndex];               // 保存最后一个节点        
     data[lastElemIndex] = data[1];              // 把根节点赋值给最后一个节点
-    for(indexNow = 1; !isMaxHeap(indexNow, temp); indexNow = getMaxChildIndex(indexNow));
+    validSize --;                               // 此时最后一个节点已经不属于这个堆了
+    // data[1] = temp;                             // 把最后一个节点写到根节点（其实就是根节点与最后一个节点交换）
+    for(indexNow = 1; !isMaxHeap(indexNow, temp);) {
+        int maxChildIndex = getMaxChildIndex(indexNow);
+        data[indexNow] = data[maxChildIndex];
+        indexNow = maxChildIndex;
+    }
                                                 // 一旦以最后一个元素为根节点的「元子树」满足最大堆，就跳出循环
                                                 // 循环结束后，以indexNow为下标，以temp为值的「元子树」满足最大堆
     data[indexNow] = temp;                      // 找到「下沉」操作的目标位置，放入原最后一个节点

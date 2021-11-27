@@ -41,22 +41,6 @@ private:
     int sortedNum = 0;
 };
 
-// template <class T>
-// void MyMaxHeap<T>::push(const T& elem) {          // 复杂度：O(log n), O(height)
-//     int indexNow = data.size();
-//     data.push_back(elem);
-//     if(indexNow == 0) {                             // 插入根节点时无需比较
-//         return;
-//     }
-//     int parentIndex = getParentIndex(indexNow);     // 获取父节点下标
-//     while(data.at(indexNow) > data.at(parentIndex)) {   // 比父节点大就循环
-//         mySwap(data[indexNow], data[parentIndex]);  //跟父节点交换
-//         indexNow = parentIndex;                     // 更新当前下标
-//         if(indexNow == 0) {break;}                  // 已经到了根节点，不能再上了
-//         parentIndex = getParentIndex(indexNow);     // 更新父节点下标
-//     }
-// }
-
 template <class T>                                // 从下往上走
 void MyMaxHeap<T>::push(const T& elem) {          // 复杂度：O(log n), O(height)
     data[validSize + 1] = elem;
@@ -103,7 +87,7 @@ T MyMaxHeap<T>::popRemove() {                         // O(log n)
     int indexNow;
     T temp = data[lastElemIndex];               // 保存最后一个节点
     T returnVal = data[1];                      // 保存要返回的元素  
-    data[lastElemIndex] = this->minElem;        // 把根节点赋值给最后一个节点
+    data[lastElemIndex] = this->minElem;        // 把最后一个节点抹掉
     validSize --;                               // 此时最后一个节点已经不存在了
     for(indexNow = 1; !isMaxHeap(indexNow, temp);) {
         int maxChildIndex = getMaxChildIndex(indexNow);
